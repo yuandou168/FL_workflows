@@ -1,6 +1,9 @@
 
   cwlVersion: v1.2
+  $namespaces:
+    cwltool: "http://commonwl.org/cwltool#"
   class: Workflow
+
 
   requirements:
     ScatterFeatureRequirement: {}
