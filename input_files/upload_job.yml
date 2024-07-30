@@ -1,0 +1,5 @@
+file_path2: 
+  class: File
+  path: /Users/chroniskontomaris/Documents/Thesis/CWL_Remote_RestAPI/CWL_Workflow/client_id1.pt # type 'string'
+aggregator_upload_url: http://34.227.32.82:808
+round: '0'

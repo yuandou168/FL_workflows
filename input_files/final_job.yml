@@ -1,0 +1,28 @@
+aggregator_upload_url: http://44.204.27.54:808
+clients: []
+command: sudo docker run -v $(pwd)/:/aggregator/clients/ chroniskaust/aggregator_test:latest
+  --iid
+command_endpoint: 'sudo docker run -t -i -v $(pwd)/:/aggregator_endpoint/files -d
+  -p 808:808 chroniskaust/aggregator_endpoint_test:latest; while ! curl --silent --head
+  --fail http://44.204.27.54:808/ >/dev/null; do sleep 1; done && echo "Aggregator
+  flask server is running." '
+command_stop: sudo service docker stop; sudo service docker start;
+communication_server_ip: http://54.84.153.22
+host: ec2-user@ec2-44-204-27-54.compute-1.amazonaws.com
+information_server_host: ec2-user@ec2-54-84-153-22.compute-1.amazonaws.com
+initial_round: '0'
+inputFile:
+  class: File
+  path: service_discovery_state.txt
+keyfile:
+  class: File
+  path: ../../aws_infrastructure/ChronisUva.pem
+mode_aggregation: aggregation
+mode_initialization: initialization
+python_file:
+  class: File
+ #path: /Users/chroniskontomaris/Documents/GitPullTest/CWL_Remote_RestAPI/CWL/cwl_workflow_execution/auxiliary_files/find_clients_updated.py
+  path: ../auxiliary_files/find_clients_updated.py
+round: '0'
+rounds: 12
+

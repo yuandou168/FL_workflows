@@ -1,0 +1,26 @@
+clients: []
+command: sudo docker run -v $(pwd)/:/aggregator/clients/ chroniskaust/aggregator_test:latest --iid
+command_endpoint: sudo docker run -t -i -v $(pwd)/:/aggregator_endpoint/files -d -p 808:808 chroniskaust/aggregator_endpoint_test:latest;
+  while ! curl --silent --head --fail http://3.86.88.175:808/ >/dev/null; do sleep
+  1; done && echo "Aggregator flask server is running." > output.txt ; cat output.txt
+  ; rm output.txt
+command_stop: sudo service docker stop; sudo service docker start;
+host: ec2-user@ec2-3-86-88-175.compute-1.amazonaws.com
+keyfile:
+  class: File
+  path: ../../aws_infrastructure/ChronisUva.pem
+aggregator_upload_url: http://3.86.88.175:808
+mode_aggregation: aggregation
+mode_initialization: initialization
+initial_round: '0'
+round: '0'
+rounds: 11
+information_server_host:  ec2-user@ec2-44-211-157-239.compute-1.amazonaws.com  # type 'string'
+python_file: 
+  class: File
+  path: ../auxiliary_files/find_clients_updated.py
+
+inputFile:
+  class: File
+  path: service_discovery_state.txt
+

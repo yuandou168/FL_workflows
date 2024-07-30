@@ -1,0 +1,5 @@
+keyfile:  # type 'File'
+    class: File
+    path: "ChronisUva.pem"
+host:   ec2-user@ec2-3-83-161-185.compute-1.amazonaws.com  
+command_stop: sudo service docker restart
